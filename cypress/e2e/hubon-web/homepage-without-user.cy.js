@@ -14,35 +14,27 @@ context('HomePage Without User LoggedIn', () => {
     cy.visit(hostUrl)
   })
 
-  // it('has logo', () => {
-    
-  // })
+  it('has logo', () => {
+    cy.get('[alt="HubON by Gardeneur"]')
+  })
 
-  // it('navigation header has Home Marketplace Catalog Transport etc links', () => {
-  //   cy.get('.site-upper-navbar').contains('Home')
-  //   cy.get('.site-upper-navbar').contains('Marketplace')
-  //   cy.get('.site-upper-navbar').contains('Catalog')
-  //   cy.get('.site-upper-navbar').contains('Transport')
-  //   cy.get('.site-upper-navbar').contains('About')
-  //   cy.get('.site-upper-navbar').contains('Events')
-  //   cy.get('.site-upper-navbar').contains('Social')
-  //   cy.get('.site-upper-navbar').contains('Invite Friends')
-  //   cy.get('.site-upper-navbar').contains('Blogs')
-  //   cy.get('.site-upper-navbar').contains('FAQ')
+  it('top bar has ETA Calculator FAQ and About link', () => {
+    cy.get('button').contains('ETA Calculator')
+    cy.get('a').contains('FAQ')
+    cy.get('a').contains('About')
+  })
 
-  // })
+  it('navigation header has Home Track Transport Get Transport etc links', () => {
+    cy.get('ul').contains('Home')
+    cy.get('ul').contains('Track Transport')
+    cy.get('ul').contains('Get Transport')
+    cy.get('ul').contains('Our Hubs')
+    cy.get('ul').contains('Login / Sign up')
+  })
 
-  // it ('have signup and login links', () => {
-  //   cy.get('div.login-signup a:first').should('have.text', 'Sign Up')
-  //   cy.get('div.login-signup a:first').should('have.attr', 'href', '/en/signup')
-  //   cy.get('div.login-signup a:last').should('have.text', 'Login')
-  //   cy.get('div.login-signup a:last').should('have.attr', 'href', '/en/login')
-  // })
-
-  // it('have search form elements', () => {
-  //   cy.get('.search-form').within(() => {
-  //     cy.get('input.howtogrow_comment_input').should('have.attr', 'placeholder', 'What are you looking for?')
-  //     cy.get('input.pac-target-input').should('have.attr', 'placeholder', 'Location')
-  //   })
-  // })
+  it ('verify text', () => {
+    cy.get('h3').contains('Easy, Economical, Eco-Friendly Transport')
+    cy.get('p').contains('$6.99 flat fee / transport')
+    cy.get('a').contains('Try now for FREE')
+  })
 })
