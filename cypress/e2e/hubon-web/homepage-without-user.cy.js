@@ -15,7 +15,7 @@ context('HomePage Without User LoggedIn', () => {
   })
 
   it('has logo', () => {
-    cy.get('[alt="HubON by Gardeneur"]')
+    cy.get('[alt="HubOn by Gardeneur"]')
   })
 
   it('top bar has ETA Calculator FAQ and About link', () => {
