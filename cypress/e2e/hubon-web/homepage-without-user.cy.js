@@ -32,7 +32,7 @@ context('HomePage Without User LoggedIn', () => {
     cy.get('ul').contains('Login / Sign up')
   })
 
-  it ('verify text', () => {
+  it ('homepage text', () => {
     cy.get('h3').contains('Easy, Economical, Eco-Friendly Transport')
     cy.get('p').contains('$6.99 flat fee / transport')
     cy.get('a').contains('Try now for FREE')
