@@ -46,4 +46,14 @@ context('Admin panel transport page', () => {
     // wait till we get 200
     cy.wait('@sort_by_oldest').its('response.statusCode').should('eq', 200)
   })
+
+  it('filter transport', () => {
+    // declare the AJAX request we will wait for
+    cy.intercept('GET', '/admin/v1/transports?page=1&page_size=4&filter[state]=initiated&sort_by=latest').as('filter_transport')
+    cy.contains('button', 'Filters').click()
+    cy.get('select[name="state"]').select("initiated")
+    cy.get('button[type="submit"]').click();
+    // wait till we get 200
+    cy.wait('@filter_transport').its('response.statusCode').should('eq', 200)
+  })
 })
