@@ -29,7 +29,7 @@ context('Admin panel', () => {
     cy.url().should('contain', '/admin')
   })
 
-  it('left sidebar contain the links', () => {
+  it('left sidebar navigation menu', () => {
     cy.get('ul').contains('Transport')
     cy.get('ul').contains('Hubs')
     cy.get('ul').contains('Hub Groups')
