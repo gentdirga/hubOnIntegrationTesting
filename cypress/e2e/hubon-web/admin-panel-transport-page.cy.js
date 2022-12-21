@@ -9,7 +9,7 @@ if (uiURL == "" || uiURL === undefined) {
 
 const hostUrl = uiURL;
 
-context('Admin panel', () => {
+context('Admin panel transport page', () => {
 
   beforeEach(() => {
     cy.visit(hostUrl+'admin/login')
@@ -29,23 +29,21 @@ context('Admin panel', () => {
     cy.url().should('contain', '/admin')
   })
 
-  it('left sidebar contain the links', () => {
-    cy.get('ul').contains('Transport')
-    cy.get('ul').contains('Hubs')
-    cy.get('ul').contains('Hub Groups')
-    cy.get('ul').contains('Category')
-    cy.get('ul').contains('Coupon Management')
-    cy.get('ul').contains('Transport Management')
-    cy.get('ul').contains("Driver's Dashboard")
-    cy.get('ul').contains('Faq Management')
-    cy.get('ul').contains('Global Holidays')
-    cy.get('ul').contains('Dashboard')
-    cy.get('ul').contains('Logout')
+  it('loads transport page after login', () => {
+    cy.contains('h3', 'Transport')
+    cy.contains('button', 'Filters')
+    cy.contains('button', 'Sort By:')
+    cy.contains('div', 'Latest')
+    cy.contains('button', 'Search By:')
+    cy.contains('div', 'Transport ID')
+    cy.get('input').should('have.attr', 'placeholder', 'search transport')
   })
 
-  it('logout from admin panel', () => {
-    cy.get('ul').contains('Logout').click()
-    cy.get('h3').contains('HubOn Admin Login')
-    cy.url().should('include', '/admin/login')
+  it('sort transports by oldest first', () => {
+    // declare the AJAX request we will wait for
+    cy.intercept('GET', '/admin/v1/transports?page=1&page_size=4&sort_by=oldest').as('sort_by_oldest')
+    cy.get('select[name="sort_by"]').select("oldest")
+    // wait till we get 200
+    cy.wait('@sort_by_oldest').its('response.statusCode').should('eq', 200)
   })
 })
