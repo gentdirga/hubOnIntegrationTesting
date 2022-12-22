@@ -25,6 +25,7 @@ context('Admin panel transport page', () => {
         })
     })
 
+    cy.confirmCaptcha
     cy.get('button').contains('Login').click()
     cy.url().should('contain', '/admin')
   })

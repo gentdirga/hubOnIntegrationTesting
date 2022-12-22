@@ -15,7 +15,7 @@ context('Admin panel', () => {
     cy.visit(hostUrl+'admin/login')
     cy.get('input[name="username"]').type(Cypress.env('default_admin_username'))
     cy.get('input[name="password"]').type(Cypress.env('default_admin_password'))
-    
+
     Cypress.Commands.add('confirmCaptcha', function () {
       cy.get('iframe')
         .first()
@@ -24,6 +24,7 @@ context('Admin panel', () => {
           cy.wrap(body).find('.recaptcha-checkbox-border').should('be.visible').click()
         })
     })
+    cy.confirmCaptcha
 
     cy.get('button').contains('Login').click()
     cy.url().should('contain', '/admin')
