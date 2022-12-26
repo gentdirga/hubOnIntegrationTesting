@@ -54,7 +54,7 @@ context('Admin panel hubs page', () => {
     cy.get('input[name="categories.cat_1"]').check({force: true})
     cy.get('button.btn-primary').click()
 
-    cy.wait(1000)
+    cy.wait(2000)
     // load hubs page
     cy.contains('a', 'Hubs').click()
     
@@ -64,18 +64,9 @@ context('Admin panel hubs page', () => {
     cy.contains('a', newHubName).click()
     cy.get('button.btn-danger').click()
 
+    cy.wait(2000)
     cy.contains('a', 'Hubs').click()
     cy.contains('table td', 'inactive')
     
   })
-
-//   it('filter transport', () => {
-//     // declare the AJAX request we will wait for
-//     cy.intercept('GET', '/admin/v1/transports?page=1&page_size=4&filter[state]=initiated&sort_by=latest').as('filter_transport')
-//     cy.contains('button', 'Filters').click()
-//     cy.get('select[name="state"]').select("initiated")
-//     cy.get('button[type="submit"]').click();
-//     // wait till we get 200
-//     cy.wait('@filter_transport').its('response.statusCode').should('eq', 200)
-//   })
 })
