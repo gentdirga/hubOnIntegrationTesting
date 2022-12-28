@@ -13,7 +13,7 @@ const uniqueSeed = Date.now().toString();
 const getUniqueId = () => Cypress._.uniqueId(uniqueSeed);
 const newHubGroupName = getUniqueId() + "testing hub group";
 
-context('Admin panel hubs groups page', () => {
+context('Admin panel category page', () => {
 
   beforeEach(() => {
     cy.visit(hostUrl+'admin/login')
