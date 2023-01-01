@@ -20,6 +20,7 @@
     "cypress-multi-reporters": "^1.6.2",
     "dayjs": "^1.11.7",
     "mocha": "^10.2.0",
-    "mochawesome-report-generator": "^6.2.0"
+    "mochawesome-report-generator": "^6.2.0",
+    "node-static": "^0.7.11"
   }
 }

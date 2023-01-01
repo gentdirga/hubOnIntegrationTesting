@@ -4,6 +4,12 @@ hooks:
       sudo apt-get update
       sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb < /dev/null > /dev/null
       npm install
+      rm -rf cypress/results
       ./node_modules/.bin/cypress run --env CYPRESS_BASE_URL=$HUB_ON_WEB_URL
       yarn combine-reports
       yarn generate-report
+daemons:
+  static-server: # Name of the process is "rails", which is to launch a rails server on port 3001.
+    run:
+      cmd: node server.js
+      
