@@ -15,7 +15,7 @@ context('Track Transport Page', () => {
   })
 	
 	it('load track transport page', () => {
-    cy.get('ul').contains('Track Transport').click()
+    	cy.get('ul').contains('Track Transport').click()
 		cy.get('h3').contains('Track your transport')
 		cy.get('p').contains('We will require a phone number validation for security purposes')
 		cy.get('input[name="identity"]')
